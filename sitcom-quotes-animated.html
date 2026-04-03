@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sitcom Quotes & Real-Life Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #F7F3EE;
+    --espresso: #4A3428;
+    --rose: #D8B7B0;
+    --mauve: #B89DA6;
+    --soft-black: #1E1E1E;
+    --light-rose: #EDD8D3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--soft-black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(247,243,238,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(74,52,40,0.1);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--espresso);
+    letter-spacing: -0.02em;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--espresso);
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  /* PAGE MANAGEMENT */
+  .page { display: none; padding-top: 5rem; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ── HOME PAGE ── */
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 5rem);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 4rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(216,183,176,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -80px; left: 10%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,157,166,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--espresso);
+    color: var(--cream);
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.9rem; border-radius: 20px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 900; line-height: 1.15;
+    color: var(--espresso);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--mauve);
+  }
+  .hero p {
+    font-size: 1rem; line-height: 1.75;
+    color: var(--espresso); opacity: 0.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; border: none;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    background: var(--espresso); color: var(--cream);
+    box-shadow: 0 4px 15px rgba(74,52,40,0.25);
+  }
+  .btn-primary:hover { box-shadow: 0 8px 25px rgba(74,52,40,0.35); }
+  .btn-secondary {
+    background: transparent; color: var(--espresso);
+    border: 2px solid var(--espresso);
+  }
+  .btn-outline {
+    background: transparent; color: var(--espresso);
+    border: 1.5px solid rgba(74,52,40,0.4);
+    font-size: 0.8rem;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(74,52,40,0.15);
+    max-width: 340px;
+    position: relative;
+    transform: rotate(2deg);
+    transition: transform 0.3s;
+  }
+  .hero-card:hover { transform: rotate(0deg) scale(1.02); }
+  .hero-card::before {
+    content: '📺';
+    font-size: 2.5rem;
+    display: block; margin-bottom: 1rem;
+  }
+  .hero-card blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-style: italic;
+    color: var(--espresso); line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+  .hero-card cite {
+    font-size: 0.75rem; color: var(--mauve);
+    font-style: normal; letter-spacing: 0.05em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .card-tag {
+    position: absolute; top: -12px; right: 20px;
+    background: var(--rose); color: var(--espresso);
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem; border-radius: 20px;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 5rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mauve); font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700; color: var(--espresso);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+
+  /* FEATURED QUOTE */
+  .featured-quote {
+    background: var(--espresso);
+    color: var(--cream);
+    padding: 5rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .featured-quote::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 20rem; font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    position: absolute; top: -4rem; left: 5%;
+    line-height: 1; pointer-events: none;
+  }
+  .featured-quote .section-label { color: var(--rose); }
+  .featured-quote .section-title { color: var(--cream); }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-style: italic; font-weight: 400;
+    line-height: 1.65; max-width: 700px;
+    margin: 2rem auto 1rem;
+    position: relative; z-index: 1;
+  }
+  .quote-attribution {
+    color: var(--rose); font-size: 0.85rem;
+    font-weight: 500; margin-bottom: 1rem;
+  }
+  .quote-note {
+    color: rgba(247,243,238,0.65);
+    font-size: 0.95rem; line-height: 1.7;
+    max-width: 500px; margin: 0 auto 2rem;
+  }
+
+  /* EPISODE */
+  .episode-section { background: var(--light-rose); }
+  .episode-card {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 2.5rem; align-items: center;
+    background: white; border-radius: 20px;
+    padding: 2.5rem; margin-top: 2rem;
+    box-shadow: 0 8px 30px rgba(74,52,40,0.08);
+    max-width: 750px;
+  }
+  .play-btn {
+    width: 70px; height: 70px;
+    background: var(--espresso);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer; flex-shrink: 0;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .play-btn:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(74,52,40,0.3); }
+  .episode-meta { font-size: 0.75rem; color: var(--mauve); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .episode-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--espresso); margin-bottom: 0.5rem; }
+  .episode-desc { font-size: 0.9rem; color: var(--espresso); opacity: 0.65; line-height: 1.6; margin-bottom: 1rem; }
+
+  /* BLOG CARDS */
+  .cards-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem; margin-top: 2.5rem;
+  }
+  .blog-card {
+    background: white; border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(74,52,40,0.07);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .blog-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(74,52,40,0.13); }
+  .blog-card-emoji { font-size: 2rem; margin-bottom: 1rem; }
+  .blog-card-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mauve); font-weight: 600; margin-bottom: 0.5rem; }
+  .blog-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--espresso); line-height: 1.4; margin-bottom: 0.75rem; }
+  .blog-card p { font-size: 0.83rem; color: var(--espresso); opacity: 0.6; line-height: 1.6; }
+  .blog-card-link { display: inline-block; margin-top: 1.2rem; font-size: 0.78rem; color: var(--espresso); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--rose); padding-bottom: 1px; }
+
+  /* CHAOS SECTION */
+  .chaos-section { background: var(--espresso); padding: 4rem 5rem; }
+  .chaos-section .section-label { color: var(--rose); }
+  .chaos-section .section-title { color: var(--cream); margin-bottom: 2.5rem; }
+  .chaos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .chaos-card {
+    border: 1.5px solid rgba(247,243,238,0.15);
+    border-radius: 16px; padding: 1.75rem;
+    transition: background 0.25s, border-color 0.25s;
+    cursor: default;
+  }
+  .chaos-card:hover { background: rgba(247,243,238,0.07); border-color: rgba(247,243,238,0.3); }
+  .chaos-card p { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(247,243,238,0.85); line-height: 1.6; }
+
+  /* SUBMIT */
+  .submit-section { background: var(--light-rose); }
+  .submit-inner {
+    max-width: 680px; margin: 0 auto; text-align: center;
+  }
+  .submit-inner .section-title { font-size: 2.4rem; margin-bottom: 1rem; }
+  .submit-inner p { color: var(--espresso); opacity: 0.7; font-size: 0.95rem; line-height: 1.75; margin-bottom: 2.5rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--soft-black);
+    color: rgba(247,243,238,0.7);
+    text-align: center; padding: 3rem 2rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .footer-tagline { font-size: 0.85rem; margin-bottom: 1.5rem; }
+  .footer-icons { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+  .footer-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(247,243,238,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-decoration: none;
+  }
+  .footer-icon:hover { background: rgba(247,243,238,0.1); border-color: rgba(247,243,238,0.5); }
+  .footer-bottom { font-size: 0.75rem; opacity: 0.4; }
+
+  /* ── ABOUT PAGE ── */
+  .about-hero {
+    padding: 5rem 5rem 3rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .about-img-placeholder {
+    background: linear-gradient(135deg, var(--rose), var(--mauve));
+    border-radius: 24px;
+    height: 420px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    box-shadow: 0 20px 60px rgba(74,52,40,0.15);
+  }
+  .about-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: var(--espresso); margin-bottom: 1.5rem;
+    line-height: 1.15;
+  }
+  .about-text p {
+    font-size: 0.97rem; line-height: 1.85;
+    color: var(--espresso); opacity: 0.75;
+    margin-bottom: 1rem;
+  }
+
+  /* ── PODCAST PAGE ── */
+  .podcast-hero {
+    padding: 4rem 5rem 3rem;
+    text-align: center;
+    background: var(--espresso);
+  }
+  .podcast-hero .section-label { color: var(--rose); }
+  .podcast-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900;
+    color: var(--cream); margin-bottom: 1rem;
+  }
+  .podcast-hero p { color: rgba(247,243,238,0.65); font-size: 1rem; line-height: 1.7; max-width: 580px; margin: 0 auto; }
+  .episodes-list { padding: 4rem 5rem; }
+  .ep-item {
+    display: flex; gap: 1.5rem; align-items: center;
+    padding: 1.5rem 2rem;
+    border-radius: 14px;
+    margin-bottom: 1rem;
+    background: white;
+    box-shadow: 0 3px 15px rgba(74,52,40,0.06);
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .ep-item:hover { transform: translateX(4px); }
+  .ep-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--rose); min-width: 50px; }
+  .ep-info h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--espresso); margin-bottom: 0.3rem; }
+  .ep-info p { font-size: 0.82rem; color: var(--espresso); opacity: 0.55; }
+  .ep-dur { margin-left: auto; font-size: 0.78rem; color: var(--mauve); font-weight: 600; flex-shrink: 0; }
+
+  /* ── QUOTE NOTES PAGE ── */
+  .qnotes-hero {
+    padding: 4rem 5rem 3rem;
+    background: var(--light-rose);
+  }
+  .qnotes-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900;
+    color: var(--espresso); margin-bottom: 1rem;
+  }
+  .qnotes-hero p { color: var(--espresso); opacity: 0.65; font-size: 1rem; line-height: 1.7; max-width: 560px; }
+  .qnotes-grid { padding: 3rem 5rem 5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .qnote-card {
+    background: white; border-radius: 20px; padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(74,52,40,0.08);
+    transition: transform 0.25s;
+    cursor: pointer;
+  }
+  .qnote-card:hover { transform: translateY(-4px); }
+  .qnote-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-style: italic;
+    color: var(--espresso); line-height: 1.65;
+    border-left: 3px solid var(--rose);
+    padding-left: 1rem; margin-bottom: 1rem;
+  }
+  .qnote-show { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mauve); font-weight: 700; margin-bottom: 0.8rem; }
+  .qnote-text { font-size: 0.88rem; color: var(--espresso); opacity: 0.65; line-height: 1.7; }
+
+  /* ── SUBMIT PAGE ── */
+  .submit-page { padding: 4rem 5rem; }
+  .submit-page h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: var(--espresso); margin-bottom: 0.8rem;
+  }
+  .submit-page > p { color: var(--espresso); opacity: 0.65; font-size: 0.97rem; line-height: 1.75; max-width: 600px; margin-bottom: 3rem; }
+  .chaos-form {
+    max-width: 640px;
+    background: white; border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(74,52,40,0.1);
+  }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--espresso); margin-bottom: 0.5rem; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1.5px solid rgba(74,52,40,0.15);
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem; color: var(--soft-black);
+    background: var(--cream);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--mauve); }
+  .form-group textarea { min-height: 130px; resize: vertical; }
+  .radio-group { display: flex; gap: 1rem; }
+  .radio-label {
+    display: flex; align-items: center; gap: 0.5rem;
+    cursor: pointer; font-size: 0.88rem; color: var(--espresso);
+  }
+  .radio-label input[type="radio"] { accent-color: var(--espresso); }
+  .form-hint { font-size: 0.75rem; color: var(--mauve); margin-top: 0.3rem; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: rgba(74,52,40,0.1); margin: 0 5rem; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .page.active > * {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero, .about-hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .hero-visual { display: none; }
+    section { padding: 3rem 1.5rem; }
+    .chaos-section, .episodes-list, .qnotes-grid, .submit-page, .podcast-hero, .qnotes-hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cards-grid, .chaos-grid { grid-template-columns: 1fr; }
+    .qnotes-grid { grid-template-columns: 1fr; }
+    .featured-quote { padding: 3rem 1.5rem; }
+    .divider { margin: 0 1.5rem; }
+  }
+
+  /* ── ANIMATED BACKGROUND LAYER ── */
+  #sitcom-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  /* Floating emojis */
+  .float-emoji {
+    position: absolute;
+    font-size: 1.6rem;
+    opacity: 0;
+    animation: floatUp linear infinite;
+    user-select: none;
+    filter: drop-shadow(0 2px 6px rgba(74,52,40,0.15));
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(110vh) rotate(-10deg) scale(0.8); opacity: 0; }
+    10%  { opacity: 0.55; }
+    50%  { transform: translateY(50vh) rotate(8deg) scale(1.1); opacity: 0.4; }
+    90%  { opacity: 0.2; }
+    100% { transform: translateY(-10vh) rotate(-5deg) scale(0.9); opacity: 0; }
+  }
+
+  /* TV glow blobs */
+  .tv-glow {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    animation: glowPulse ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes glowPulse {
+    0%,100% { transform: scale(0.9); opacity: 0; }
+    40%     { opacity: 0.18; }
+    60%     { transform: scale(1.15); opacity: 0.22; }
+  }
+
+  /* Silhouette scenes */
+  .silhouette-scene {
+    position: absolute;
+    opacity: 0;
+    animation: sceneAppear ease-in-out infinite;
+  }
+  @keyframes sceneAppear {
+    0%,100% { opacity: 0; transform: translateY(8px) scale(0.97); }
+    15%,85% { opacity: 0.12; transform: translateY(0px) scale(1); }
+  }
+
+  /* Talking silhouette bob */
+  .bob { animation: bobHead 0.6s ease-in-out infinite alternate; transform-origin: bottom center; }
+  .bob2 { animation: bobHead 0.7s ease-in-out 0.3s infinite alternate; transform-origin: bottom center; }
+  @keyframes bobHead {
+    from { transform: rotate(-3deg); }
+    to   { transform: rotate(3deg); }
+  }
+
+  /* Phone arm swing */
+  .phone-arm { animation: phoneSwing 1.2s ease-in-out infinite alternate; transform-origin: 50% 90%; }
+  @keyframes phoneSwing {
+    from { transform: rotate(-6deg); }
+    to   { transform: rotate(4deg); }
+  }
+
+  /* Coffee steam */
+  .steam {
+    animation: steamRise 1.8s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  .steam2 { animation: steamRise 1.8s ease-in-out 0.6s infinite; }
+  @keyframes steamRise {
+    0%   { transform: translateY(0) scaleX(1); opacity: 0.5; }
+    50%  { transform: translateY(-8px) scaleX(1.3); opacity: 0.3; }
+    100% { transform: translateY(-16px) scaleX(0.7); opacity: 0; }
+  }
+
+  /* TV screen flicker */
+  .tv-screen-inner { animation: tvFlicker 4s steps(1) infinite; }
+  @keyframes tvFlicker {
+    0%,100% { fill: #a8d8d0; }
+    25%     { fill: #d0c0a8; }
+    50%     { fill: #b8d0a0; }
+    75%     { fill: #c8b8d8; }
+  }
+
+  /* Ensure page content stays above bg */
+  nav { z-index: 100; }
+  .page { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ ANIMATED BACKGROUND ═══════════════ -->
+<div id="sitcom-bg">
+
+  <!-- TV Glow blobs -->
+  <div class="tv-glow" style="width:420px;height:420px;background:radial-gradient(circle,rgba(216,183,176,0.6),transparent 70%);top:5%;left:-8%;animation-duration:7s;animation-delay:0s;"></div>
+  <div class="tv-glow" style="width:300px;height:300px;background:radial-gradient(circle,rgba(184,157,166,0.5),transparent 70%);top:40%;right:-5%;animation-duration:9s;animation-delay:2s;"></div>
+  <div class="tv-glow" style="width:350px;height:350px;background:radial-gradient(circle,rgba(200,180,140,0.45),transparent 70%);bottom:10%;left:30%;animation-duration:11s;animation-delay:4s;"></div>
+  <div class="tv-glow" style="width:250px;height:250px;background:radial-gradient(circle,rgba(216,183,176,0.5),transparent 70%);top:70%;right:20%;animation-duration:8s;animation-delay:1s;"></div>
+
+  <!-- Scene 1: Two people talking on a couch (The Office / Friends vibe) -->
+  <div class="silhouette-scene" style="bottom:0;left:3%;animation-duration:18s;animation-delay:0s;">
+    <svg width="220" height="160" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- couch -->
+      <rect x="10" y="110" width="200" height="30" rx="12" fill="#4A3428" opacity="0.35"/>
+      <rect x="5"  y="95"  width="30"  height="50" rx="8"  fill="#4A3428" opacity="0.3"/>
+      <rect x="185" y="95" width="30"  height="50" rx="8"  fill="#4A3428" opacity="0.3"/>
+      <!-- person 1 body -->
+      <g class="bob">
+        <ellipse cx="70" cy="100" rx="18" ry="22" fill="#4A3428" opacity="0.5"/>
+        <circle cx="70" cy="72" r="14" fill="#4A3428" opacity="0.5"/>
+        <!-- coffee cup -->
+        <rect x="85" y="105" width="12" height="10" rx="3" fill="#4A3428" opacity="0.4"/>
+        <path class="steam" d="M88 104 Q90 99 92 104" stroke="#4A3428" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <path class="steam2" d="M92 104 Q94 99 96 104" stroke="#4A3428" stroke-width="1.5" fill="none" opacity="0.4"/>
+      </g>
+      <!-- person 2 body -->
+      <g class="bob2">
+        <ellipse cx="150" cy="100" rx="18" ry="22" fill="#4A3428" opacity="0.5"/>
+        <circle cx="150" cy="72" r="14" fill="#4A3428" opacity="0.5"/>
+      </g>
+      <!-- speech bubble -->
+      <ellipse cx="150" cy="44" rx="22" ry="12" fill="#D8B7B0" opacity="0.5"/>
+      <polygon points="145,54 155,54 150,62" fill="#D8B7B0" opacity="0.5"/>
+      <circle cx="144" cy="44" r="2" fill="#4A3428" opacity="0.4"/>
+      <circle cx="150" cy="44" r="2" fill="#4A3428" opacity="0.4"/>
+      <circle cx="156" cy="44" r="2" fill="#4A3428" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- Scene 2: Person on phone (Rachel on phone vibe) -->
+  <div class="silhouette-scene" style="bottom:0;right:4%;animation-duration:20s;animation-delay:5s;">
+    <svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- body -->
+      <ellipse cx="60" cy="130" rx="22" ry="35" fill="#4A3428" opacity="0.45"/>
+      <!-- head -->
+      <circle cx="60" cy="88" r="18" fill="#4A3428" opacity="0.45"/>
+      <!-- phone arm -->
+      <g class="phone-arm">
+        <rect x="74" y="88" width="8" height="26" rx="4" fill="#4A3428" opacity="0.45"/>
+        <!-- phone -->
+        <rect x="80" y="80" width="14" height="22" rx="4" fill="#4A3428" opacity="0.5"/>
+        <rect x="82" y="83" width="10" height="14" rx="2" fill="#B89DA6" opacity="0.4"/>
+      </g>
+      <!-- speech bubble -->
+      <ellipse cx="38" cy="65" rx="20" ry="11" fill="#D8B7B0" opacity="0.45"/>
+      <polygon points="44,74 52,74 48,82" fill="#D8B7B0" opacity="0.45"/>
+      <rect x="30" y="61" width="16" height="2" rx="1" fill="#4A3428" opacity="0.35"/>
+      <rect x="30" y="65" width="12" height="2" rx="1" fill="#4A3428" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- Scene 3: Person at desk (The Office vibe) -->
+  <div class="silhouette-scene" style="bottom:0;left:38%;animation-duration:22s;animation-delay:10s;">
+    <svg width="160" height="130" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- desk -->
+      <rect x="10" y="85" width="140" height="8" rx="4" fill="#4A3428" opacity="0.3"/>
+      <rect x="15" y="93" width="6" height="30" fill="#4A3428" opacity="0.25"/>
+      <rect x="139" y="93" width="6" height="30" fill="#4A3428" opacity="0.25"/>
+      <!-- monitor -->
+      <rect x="55" y="48" width="50" height="38" rx="5" fill="#4A3428" opacity="0.4"/>
+      <div class="tv-screen-inner">
+        <rect x="58" y="51" width="44" height="30" rx="3" fill="#a8d8d0" opacity="0.5"/>
+      </div>
+      <rect x="75" y="86" width="10" height="6" fill="#4A3428" opacity="0.3"/>
+      <!-- person -->
+      <g class="bob">
+        <circle cx="80" cy="32" r="16" fill="#4A3428" opacity="0.45"/>
+        <ellipse cx="80" cy="62" rx="20" ry="16" fill="#4A3428" opacity="0.4"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Scene 4: TV set (Brooklyn 99 / any show vibe) -->
+  <div class="silhouette-scene" style="top:12%;right:2%;animation-duration:25s;animation-delay:8s;">
+    <svg width="130" height="110" viewBox="0 0 130 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- TV body -->
+      <rect x="10" y="20" width="110" height="70" rx="10" fill="#4A3428" opacity="0.35"/>
+      <!-- screen -->
+      <rect x="16" y="26" width="98" height="58" rx="6" fill="#4A3428" opacity="0.5"/>
+      <rect class="tv-screen-inner" x="18" y="28" width="94" height="54" rx="5" fill="#a8d8d0" opacity="0.5"/>
+      <!-- antenna -->
+      <line x1="45" y1="20" x2="30" y2="2" stroke="#4A3428" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
+      <line x1="85" y1="20" x2="100" y2="2" stroke="#4A3428" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
+      <!-- legs -->
+      <rect x="40" y="90" width="14" height="14" rx="3" fill="#4A3428" opacity="0.3"/>
+      <rect x="76" y="90" width="14" height="14" rx="3" fill="#4A3428" opacity="0.3"/>
+      <!-- tiny silhouette on screen -->
+      <circle cx="55" cy="48" r="6" fill="#4A3428" opacity="0.4"/>
+      <ellipse cx="55" cy="62" rx="8" ry="9" fill="#4A3428" opacity="0.4"/>
+      <circle cx="85" cy="48" r="6" fill="#4A3428" opacity="0.4"/>
+      <ellipse cx="85" cy="62" rx="8" ry="9" fill="#4A3428" opacity="0.4"/>
+    </svg>
+  </div>
+
+</div>
+
+<!-- Floating emojis injected by JS -->
+<script>
+(function() {
+  const emojis = ['📺','☕','🛋️','📞','💬','🎙️','✨','😂','📓','🍕','🎭','💌','🤣','📱','🎬'];
+  const bg = document.getElementById('sitcom-bg');
+  emojis.forEach((emoji, i) => {
+    const el = document.createElement('div');
+    el.className = 'float-emoji';
+    el.textContent = emoji;
+    el.style.left = (5 + (i * 6.3) % 90) + '%';
+    el.style.animationDuration = (12 + Math.random() * 14) + 's';
+    el.style.animationDelay = (i * 1.8) + 's';
+    el.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+    bg.appendChild(el);
+  });
+})();
+</script>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SQ & RLN</div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('podcast')">Podcast</a></li>
+    <li><a href="#" onclick="showPage('qnotes')">Quote Notes</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('submit')">Submit Your Chaos</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ HOME PAGE ═══════════════ -->
+<div id="home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-tag">✨ A cozy corner of the internet</span>
+      <h1>Because sitcoms explain life <em>better than people do.</em></h1>
+      <p>A cozy little corner of the internet where sitcom quotes meet real life, messy emotions, and comfort-character energy.</p>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="showPage('podcast')">🎙 Listen to the Podcast</button>
+        <button class="btn btn-secondary" onclick="showPage('qnotes')">📖 Read the Latest Note</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <span class="card-tag">Quote of the week</span>
+        <blockquote>"Welcome to the real world. It sucks. You're gonna love it."</blockquote>
+        <cite>— Rachel Green, Friends</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED QUOTE -->
+  <section class="featured-quote">
+    <div class="section-label">Quote of the Week</div>
+    <h2 class="section-title" style="color:var(--cream)">This Week's Wisdom</h2>
+    <p class="quote-text">"Welcome to the real world. It sucks. You're gonna love it."</p>
+    <p class="quote-attribution">— Rachel Green, Friends</p>
+    <p class="quote-note">Adulthood is chaotic, expensive, confusing — and somehow still weirdly beautiful.</p>
+    <button class="btn" style="background:var(--rose);color:var(--espresso);font-weight:600;" onclick="showPage('qnotes')">Read the Full Note</button>
+  </section>
+
+  <!-- LATEST EPISODE -->
+  <section class="episode-section">
+    <div class="section-label">Now Playing</div>
+    <h2 class="section-title">Latest Episode</h2>
+    <div class="episode-card">
+      <div class="play-btn">▶️</div>
+      <div>
+        <div class="episode-meta">Episode 12 · 28 min</div>
+        <div class="episode-title">Why Sitcom Characters Feel More Emotionally Available Than Real People</div>
+        <div class="episode-desc">A little funny, a little painful, and way too relatable.</div>
+        <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="btn btn-outline" style="text-decoration:none">🎵 Listen on Spotify →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BLOG CARDS -->
+  <section>
+    <div class="section-label">Latest Notes from the Couch</div>
+    <h2 class="section-title">Real-Life Notes</h2>
+    <div class="cards-grid">
+      <div class="blog-card">
+        <div class="blog-card-emoji">😬</div>
+        <div class="blog-card-tag">Character Study</div>
+        <h3>What Chandler Bing taught me about humor and insecurity</h3>
+        <p>Using jokes as a defense mechanism? A deep dive into Chandler's emotional armor — and ours.</p>
+        <a class="blog-card-link" href="#" onclick="showPage('qnotes')">Read Note →</a>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-emoji">🛋</div>
+        <div class="blog-card-tag">Comfort Watching</div>
+        <h3>Why comfort shows feel like emotional support</h3>
+        <p>There's real science behind why re-watching The Office at 2am feels like a hug.</p>
+        <a class="blog-card-link" href="#" onclick="showPage('qnotes')">Read Note →</a>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-emoji">📺</div>
+        <div class="blog-card-tag">Self-Reflection</div>
+        <h3>If your life were a sitcom, what season are you in?</h3>
+        <p>Season 1 chaos? Mid-series pivot? Or the complicated final arc? Let's find out.</p>
+        <a class="blog-card-link" href="#" onclick="showPage('qnotes')">Read Note →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAOS SECTION -->
+  <section class="chaos-section">
+    <div class="section-label">Emotionally Sponsored by Sitcoms</div>
+    <h2 class="section-title" style="color:var(--cream)">Relatable Thoughts</h2>
+    <div class="chaos-grid">
+      <div class="chaos-card"><p>"Me taking life advice from fictional people with terrible decision-making skills."</p></div>
+      <div class="chaos-card"><p>"Adulting would be easier with a laugh track."</p></div>
+      <div class="chaos-card"><p>"Why does every emotional crisis feel like a season finale?"</p></div>
+    </div>
+  </section>
+
+  <!-- SUBMIT -->
+  <section class="submit-section">
+    <div class="submit-inner">
+      <div class="section-label">Got a Life Situation?</div>
+      <h2 class="section-title">Send Me Your Chaos</h2>
+      <p>Got a life situation, emotional spiral, or random overthinking moment? Send it in, and I might match it with a sitcom quote or turn it into an episode/note.</p>
+      <button class="btn btn-primary" onclick="showPage('submit')">Submit Anonymously</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Sitcom Quotes & Real-Life Notes</div>
+    <div class="footer-tagline">Built with coffee, comfort shows, and questionable emotional stability.</div>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/tvquotestolife2025" target="_blank" class="footer-icon">📸</a>
+      <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">🎵</a>
+      <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">▶️</a>
+      <a href="mailto:mounapriya@icould.com" class="footer-icon">✉️</a>
+    </div>
+    <div class="footer-bottom">© 2025 Sitcom Quotes & Real-Life Notes · Made with 🍵</div>
+  </footer>
+
+</div>
+
+<!-- ═══════════════ PODCAST PAGE ═══════════════ -->
+<div id="podcast" class="page">
+  <div class="podcast-hero">
+    <div class="section-label">🎙 Listen In</div>
+    <h1>The Podcast</h1>
+    <p>Welcome to the part where we overanalyze sitcom quotes like they're free therapy. Every episode connects a quote or character to real life — friendships, adulthood, heartbreak, growth, and all the weird in-between stuff.</p>
+    <div style="margin-top:2rem">
+      <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="btn" style="background:#1DB954;color:white;font-weight:600;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Listen on Spotify
+      </a>
+    </div>
+  </div>
+
+  <!-- Spotify Embed -->
+  <div style="background:var(--espresso);padding:0 5rem 3rem;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/2Cy2q8XbTl4VCyo3jxGDAY?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+
+  <div class="episodes-list">
+    <div class="section-label">All Episodes</div>
+    <h2 class="section-title" style="margin-bottom:2rem">Every Episode</h2>
+    <div class="ep-item">
+      <div class="ep-num">12</div>
+      <div class="ep-info">
+        <h4>Why Sitcom Characters Feel More Emotionally Available Than Real People</h4>
+        <p>A little funny, a little painful, and way too relatable.</p>
+      </div>
+      <div class="ep-dur">28 min</div>
+    </div>
+    <div class="ep-item">
+      <div class="ep-num">11</div>
+      <div class="ep-info">
+        <h4>The Phoebe Buffay Guide to Unbothered Living</h4>
+        <p>What Phoebe knew that the rest of us are still figuring out.</p>
+      </div>
+      <div class="ep-dur">22 min</div>
+    </div>
+    <div class="ep-item">
+      <div class="ep-num">10</div>
+      <div class="ep-info">
+        <h4>Jim Halpert and the Art of Quiet Ambition</h4>
+        <p>On dreaming small, then pivoting big.</p>
+      </div>
+      <div class="ep-dur">31 min</div>
+    </div>
+    <div class="ep-item">
+      <div class="ep-num">09</div>
+      <div class="ep-info">
+        <h4>What Ted Mosby Got Wrong About Love (and So Did I)</h4>
+        <p>Romanticizing everything is exhausting. Here's proof.</p>
+      </div>
+      <div class="ep-dur">35 min</div>
+    </div>
+    <div class="ep-item">
+      <div class="ep-num">08</div>
+      <div class="ep-info">
+        <h4>Comfort Re-watches: Why We Watch the Same Shows Over and Over</h4>
+        <p>Turns out it's not laziness. It's emotional regulation.</p>
+      </div>
+      <div class="ep-dur">26 min</div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Sitcom Quotes & Real-Life Notes</div>
+    <div class="footer-tagline">Built with coffee, comfort shows, and questionable emotional stability.</div>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/tvquotestolife2025" target="_blank" class="footer-icon">📸</a><a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">🎵</a>
+      <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">▶️</a><a href="mailto:mounapriya@icould.com" class="footer-icon">✉️</a>
+    </div>
+    <div class="footer-bottom">© 2025 Sitcom Quotes & Real-Life Notes</div>
+  </footer>
+</div>
+
+<!-- ═══════════════ QUOTE NOTES PAGE ═══════════════ -->
+<div id="qnotes" class="page">
+  <div class="qnotes-hero">
+    <div class="section-label">📓 Quote Notes</div>
+    <h1>Quote Notes</h1>
+    <p>Funny on the outside, emotionally educational on the inside. This is where sitcom quotes turn into little life lessons, personal notes, and "why is this so relatable?" moments.</p>
+  </div>
+  <div class="qnotes-grid">
+    <div class="qnote-card">
+      <div class="qnote-show">Friends · Rachel Green</div>
+      <div class="qnote-quote">"Welcome to the real world. It sucks. You're gonna love it."</div>
+      <div class="qnote-text">Adulthood is chaotic, expensive, and confusing. And somehow, still weirdly beautiful. Rachel said this like a warning. We heard it like a welcome sign.</div>
+    </div>
+    <div class="qnote-card">
+      <div class="qnote-show">The Office · Michael Scott</div>
+      <div class="qnote-quote">"I'm not superstitious, but I am a little stitious."</div>
+      <div class="qnote-text">On the spectrum between full rationality and full chaos, most of us live somewhere in the middle. Michael accidentally summed up the human condition in one sentence.</div>
+    </div>
+    <div class="qnote-card">
+      <div class="qnote-show">Schitt's Creek · David Rose</div>
+      <div class="qnote-quote">"I simply do not accept that."</div>
+      <div class="qnote-text">Sometimes the most powerful thing you can do is refuse to accept a situation as permanent. David Rose taught us that dramatic resistance is a valid life strategy.</div>
+    </div>
+    <div class="qnote-card">
+      <div class="qnote-show">Brooklyn Nine-Nine · Jake Peralta</div>
+      <div class="qnote-quote">"Title of your sex tape."</div>
+      <div class="qnote-text">Okay, this one is just pure joy. Sometimes a show's greatest gift is teaching you that humor is a form of love. Jake and the Nine-Nine showed us that.</div>
+    </div>
+    <div class="qnote-card">
+      <div class="qnote-show">HIMYM · Ted Mosby</div>
+      <div class="qnote-quote">"Because sometimes even if you know how something's gonna end, that doesn't mean you can't enjoy the ride."</div>
+      <div class="qnote-text">Ted's romanticism was exhausting and beautiful in equal measure. This quote? Actually one of the best things he ever said.</div>
+    </div>
+    <div class="qnote-card">
+      <div class="qnote-show">New Girl · Nick Miller</div>
+      <div class="qnote-quote">"I'm not gonna keep giving 110% if I'm only getting 40% back."</div>
+      <div class="qnote-text">Nick Miller accidentally stumbled into the most accurate description of burnout in relationships I've ever heard. He thought he was complaining. He was actually healing.</div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Sitcom Quotes & Real-Life Notes</div>
+    <div class="footer-tagline">Built with coffee, comfort shows, and questionable emotional stability.</div>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/tvquotestolife2025" target="_blank" class="footer-icon">📸</a><a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">🎵</a>
+      <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">▶️</a><a href="mailto:mounapriya@icould.com" class="footer-icon">✉️</a>
+    </div>
+    <div class="footer-bottom">© 2025 Sitcom Quotes & Real-Life Notes</div>
+  </footer>
+</div>
+
+<!-- ═══════════════ ABOUT PAGE ═══════════════ -->
+<div id="about" class="page">
+  <div class="about-hero">
+    <div class="about-img-placeholder">👋</div>
+    <div class="about-text">
+      <h1>Hi, I'm Mouna.</h1>
+      <p>I started <strong>Sitcom Quotes & Real-Life Notes</strong> because sometimes fictional characters explain life better than actual people do.</p>
+      <p>This space is for anyone who has ever laughed at a sitcom line and then randomly realized… wait, that's actually deep.</p>
+      <p>Here, I break down sitcom quotes into real-life lessons, relatable thoughts, emotional chaos, and comfort-character-level observations — through podcast episodes, notes, and stories.</p>
+      <p>If life feels confusing, dramatic, funny, or slightly unhinged… you're in the right place.</p>
+      <div style="margin-top:2rem">
+        <button class="btn btn-primary" onclick="showPage('podcast')">Listen to the Podcast</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Sitcom Quotes & Real-Life Notes</div>
+    <div class="footer-tagline">Built with coffee, comfort shows, and questionable emotional stability.</div>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/tvquotestolife2025" target="_blank" class="footer-icon">📸</a><a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">🎵</a>
+      <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">▶️</a><a href="mailto:mounapriya@icould.com" class="footer-icon">✉️</a>
+    </div>
+    <div class="footer-bottom">© 2025 Sitcom Quotes & Real-Life Notes</div>
+  </footer>
+</div>
+
+<!-- ═══════════════ SUBMIT PAGE ═══════════════ -->
+<div id="submit" class="page">
+  <div class="submit-page">
+    <div class="section-label">📬 Submit Your Chaos</div>
+    <h1>Send Me Your Chaos</h1>
+    <p>Have a life situation, friendship confusion, heartbreak spiral, or random thought you want turned into a sitcom-style note? Drop it here. You can stay anonymous.</p>
+    <div class="chaos-form">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" placeholder="Your name (totally optional)"/>
+        <div class="form-hint">Leave blank to stay anonymous ✨</div>
+      </div>
+      <div class="form-group">
+        <label>What's going on?</label>
+        <textarea placeholder="Spill the chaos. The more specific, the better. What's the situation? How are you feeling? What do you wish someone would say?"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Keep it anonymous?</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="anon" value="yes" checked/> Yes, keep me anonymous</label>
+          <label class="radio-label"><input type="radio" name="anon" value="no"/> No, you can credit me</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com (optional — only if you want a reply)"/>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;text-align:center" onclick="handleSubmit()">Send It In ✨</button>
+    </div>
+    <div id="submit-confirm" style="display:none;margin-top:2rem;padding:1.5rem 2rem;background:white;border-radius:16px;border-left:4px solid var(--rose);max-width:640px">
+      <strong style="font-family:'Playfair Display',serif;color:var(--espresso);font-size:1.1rem">💌 Got it, thank you!</strong>
+      <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--espresso);opacity:0.7;line-height:1.65">Your chaos has been received with open arms. I'll sit with it, find the right sitcom quote, and maybe turn it into something cozy and real.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Sitcom Quotes & Real-Life Notes</div>
+    <div class="footer-tagline">Built with coffee, comfort shows, and questionable emotional stability.</div>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/tvquotestolife2025" target="_blank" class="footer-icon">📸</a><a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">🎵</a>
+      <a href="https://open.spotify.com/show/2Cy2q8XbTl4VCyo3jxGDAY" target="_blank" class="footer-icon">▶️</a><a href="mailto:mounapriya@icould.com" class="footer-icon">✉️</a>
+    </div>
+    <div class="footer-bottom">© 2025 Sitcom Quotes & Real-Life Notes</div>
+  </footer>
+</div>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function handleSubmit() {
+    document.getElementById('submit-confirm').style.display = 'block';
+    document.getElementById('submit-confirm').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
